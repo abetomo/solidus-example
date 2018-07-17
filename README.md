@@ -1,1 +1,1 @@
-# solidus-examples
+# solidus-example

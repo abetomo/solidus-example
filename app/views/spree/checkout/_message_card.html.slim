@@ -1,0 +1,7 @@
+fieldset#message_card[data-hook]
+  legend[align="center"]
+    = Spree.t(:message_card)
+  .inner[data-hook] TODO: message_card
+br
+.form-buttons[data-hook="buttons"]
+  = submit_tag Spree.t(:save_and_continue), class: 'continue button primary'

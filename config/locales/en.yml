@@ -30,4 +30,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  spree:
+    order_state:
+      address: address
+      awaiting_return: awaiting return
+      canceled: canceled
+      cart: cart
+      complete: complete
+      confirm: confirm
+      delivery: delivery
+      payment: payment
+      message_card: message_card
+      resumed: resumed
+      returned: returned

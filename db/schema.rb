@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720041623) do
+ActiveRecord::Schema.define(version: 20180726012059) do
 
   create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "slug", null: false
@@ -202,6 +202,8 @@ ActiveRecord::Schema.define(version: 20180720041623) do
     t.decimal "additional_tax_total", precision: 10, scale: 2, default: "0.0"
     t.decimal "promo_total", precision: 10, scale: 2, default: "0.0"
     t.decimal "included_tax_total", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "card_id"
+    t.index ["card_id"], name: "index_spree_line_items_on_card_id"
     t.index ["order_id"], name: "index_spree_line_items_on_order_id"
     t.index ["variant_id"], name: "index_spree_line_items_on_variant_id"
   end

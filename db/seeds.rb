@@ -9,3 +9,7 @@
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+Spree::CardDesign.create(name: 'Red')
+Spree::CardDesign.create(name: 'Green')
+Spree::CardDesign.create(name: 'Yellow')

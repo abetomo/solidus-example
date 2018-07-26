@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720041623) do
+ActiveRecord::Schema.define(version: 20180726045925) do
 
   create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "slug", null: false
@@ -106,6 +106,12 @@ ActiveRecord::Schema.define(version: 20180720041623) do
     t.text "preferences"
     t.index ["calculable_id", "calculable_type"], name: "index_spree_calculators_on_calculable_id_and_calculable_type"
     t.index ["id", "type"], name: "index_spree_calculators_on_id_and_type"
+  end
+
+  create_table "spree_card_designs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "spree_cartons", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -213,6 +219,16 @@ ActiveRecord::Schema.define(version: 20180720041623) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type"
+  end
+
+  create_table "spree_message_cards", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "line_item_id"
+    t.integer "card_design_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_design_id"], name: "fk_rails_f64fa6f519"
+    t.index ["line_item_id"], name: "fk_rails_b685c85cad"
   end
 
   create_table "spree_option_type_prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -1187,6 +1203,8 @@ ActiveRecord::Schema.define(version: 20180720041623) do
   end
 
   add_foreign_key "spree_adjustments", "spree_orders", column: "order_id", name: "fk_spree_adjustments_order_id"
+  add_foreign_key "spree_message_cards", "spree_card_designs", column: "card_design_id"
+  add_foreign_key "spree_message_cards", "spree_line_items", column: "line_item_id"
   add_foreign_key "spree_product_promotion_rules", "spree_products", column: "product_id"
   add_foreign_key "spree_product_promotion_rules", "spree_promotion_rules", column: "promotion_rule_id"
   add_foreign_key "spree_promotion_code_batches", "spree_promotions", column: "promotion_id"

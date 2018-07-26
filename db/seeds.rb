@@ -9,3 +9,7 @@
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+Card.create(message: 'Thank you!')
+Card.create(message: 'Congratulations!')
+Card.create(message: 'Happy Birthday!')
